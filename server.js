@@ -25,7 +25,7 @@ app.use(express.static(path.join(__dirname, './public')))
 
 app.get('/api/robots', (req, res) => {
     try {
-        // ROLLBAR ENDPOINT 1
+        // ROLLBAR EVENT 1
         rollbar.error('ERROR Getting All Robots')
 
         res.status(200).send(botsArr)
@@ -37,7 +37,7 @@ app.get('/api/robots', (req, res) => {
 
 app.get('/api/robots/five', (req, res) => {
     try {
-        //ROLLBAR ENDPOINT 2
+        //ROLLBAR EVENT 2
         rollbar.info('Robots were requested')
 
         let shuffled = shuffleArray(bots)
@@ -52,7 +52,7 @@ app.get('/api/robots/five', (req, res) => {
 
 app.post('/api/duel', (req, res) => {
     try {
-        //ROLLBAR ENPOINT 3
+        //ROLLBAR EVENT 3
         rollbar.info('User is dueling')
 
         // getting the duos from the front end
@@ -77,7 +77,7 @@ app.post('/api/duel', (req, res) => {
         } else {
             playerRecord.losses++
 
-            //ROLLBAR ENDPOINT 4
+            //ROLLBAR EVENT 4
             rollbar.critical('Point is incorrectly distributed')
 
             res.status(200).send('You won!')
